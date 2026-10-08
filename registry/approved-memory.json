@@ -1,0 +1,70 @@
+{
+  "entries": {
+    "concurrent_agents": {
+      "accepted_risks": [],
+      "approved_at": "2026-09-07T08:18:34Z",
+      "approved_by": [
+        "user-authorized-in-session"
+      ],
+      "description": "Repos are actively edited by more than one agent, user, or session concurrently; verify current state via the scanners rather than trusting your own last-known read.",
+      "digest": "sha256:ccd09b170afe4005e78be7507138172e7e55038fceb1a32e9a8293e2cb8fd533",
+      "history": [
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-09-06T20:42:33Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:a60db7e4ac8aae6ecde225d9bf4e660dd1b4050b5a1810e9eb6362317acb7b2d",
+          "memory_type": "project",
+          "review_note": "Records today's concrete, repeated evidence of concurrent multi-agent edits to this repo (lost MCP promotions, a mid-session policy rewrite) and the resulting practice: verify via scanners, don't assume prior state, investigate and report rather than silently revert.",
+          "source": "the-goat, session ending 2026-09-06"
+        }
+      ],
+      "memory_type": "project",
+      "review_note": "One-off registry repair authorized by the user. Copied the retained approved file to candidates, confirmed byte identity, reran a clean static scan, manually reviewed the current content, and preserved the previous approval metadata in history.",
+      "scan_findings": [],
+      "source": "current approved copy reconstructed and reviewed after integrity mismatch",
+      "status": "approved"
+    },
+    "standard_load": {
+      "accepted_risks": [],
+      "approved_at": "2026-10-08T12:58:27Z",
+      "approved_by": [
+        "the-goat"
+      ],
+      "description": "Placeholder standing context. Replace with your own entry, or point the memory scripts at a private memory repository with --root.",
+      "digest": "sha256:c6ef22c9e663700f2e349b3158ef539122bb560b3965fd35e1015408665f48a1",
+      "history": [
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-09-06T16:59:43Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:a9d293d73dbbe0ad37abc56226a9fa092b6cbc8f0b08b65588dcdf62f6796595",
+          "memory_type": "user",
+          "review_note": "Initial standard-load profile: role/context, standing priorities, working preferences, known constraints for MDK docs work",
+          "source": "the-goat"
+        },
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-09-07T08:18:34Z",
+          "approved_by": [
+            "user-authorized-in-session"
+          ],
+          "digest": "sha256:4a4f6d0a2669500f9879ece039979f97b73b551aa9df4a7f1f79ab9cdda60547",
+          "memory_type": "user",
+          "review_note": "One-off registry repair authorized by the user. Copied the retained approved file to candidates, confirmed byte identity, reran a clean static scan, manually reviewed the current content, and preserved the previous approval metadata in history.",
+          "source": "current approved copy reconstructed and reviewed after integrity mismatch"
+        }
+      ],
+      "memory_type": "user",
+      "review_note": "generic placeholder; real standing context moved to private memory repository",
+      "scan_findings": [],
+      "source": "maintainer-authored placeholder for public release",
+      "status": "approved"
+    }
+  },
+  "schema_version": 1
+}

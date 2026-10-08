@@ -1,0 +1,299 @@
+{
+  "schema_version": 1,
+  "skills": {
+    "caveman": {
+      "accepted_risks": [],
+      "approved_at": "2026-09-06T21:05:26Z",
+      "approved_by": [
+        "the-goat"
+      ],
+      "digest": "sha256:b4b44cfae10be89d17f60ae2298a0d9aab5606e7c01ac1fec0a0816f2db85754",
+      "history": [],
+      "review_note": "Reviewed as the standalone SKILL.md only: clean frontmatter (name/description, no allowed-tools/hooks/context/agent), no bundled scripts, prose-only communication-style directive (terse/compressed responses), no instruction-override/secret/destructive/persistence patterns. Sourced from ponytail's own benchmarks/ directory rather than a third-party fork since it's the exact companion skill ponytail's own description references, from the same already-vetted author/repo.",
+      "scan_findings": [],
+      "source": "https://github.com/DietrichGebert/ponytail (benchmarks/arms/caveman-SKILL.md, MIT license, commit as of 2026-09-06) -- same author/repo as the approved ponytail skill, which names Caveman as its companion",
+      "status": "approved"
+    },
+    "doctor-plus": {
+      "accepted_risks": [
+        "REMOTE_INSTRUCTION"
+      ],
+      "approved_at": "2026-09-28T09:31:47Z",
+      "approved_by": [
+        "the-goat"
+      ],
+      "digest": "sha256:fed35a887be3259c96b6b512e5f0ac3e48b3c42f41b6e55d22b7aeac4638c1af",
+      "history": [],
+      "review_note": "Raw source fetched read-only; scanner PASS with 1 medium REMOTE_INSTRUCTION (optional advisory X.com link, not fetch-and-execute); no tool/hook grants, no bundled scripts, no dynamic commands, no credential access; report-first and approval-gated; fit caveat: recommendations against protected governance controls are advisory-only and must route through the control-change/reseal path",
+      "scan_findings": [
+        {
+          "line": 3,
+          "path": "skills/candidates/doctor-plus/references/briefing.md",
+          "rule_id": "REMOTE_INSTRUCTION",
+          "severity": "medium"
+        }
+      ],
+      "source": "https://github.com/bravros/bravros (skills/doctor-plus; MIT); listed at skillsdirectory.com/skills/bravros-doctor-plus",
+      "status": "approved"
+    },
+    "feature-qa": {
+      "accepted_risks": [],
+      "approved_at": "2026-10-08T12:44:08Z",
+      "approved_by": [
+        "the-goat"
+      ],
+      "digest": "sha256:3143debc0e0814b2590abd5278dd6523d46783d9d58013f7f7bd08b3779cd340",
+      "history": [
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-10-08T12:06:10Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:e85abc5883be2af0e2f7dec34e2900ecc6deb69100f04b85ffd3349b1429adab",
+          "review_note": "internal-origin skill; prose only, no tools/hooks/scripts/network; QA agent is read-only on code/PR",
+          "scan_findings": [],
+          "source": "plans/v1-plan/AI-Agent-Based Automated QA Process.md (internal plan doc, rewritten as agent instructions)",
+          "status": "approved"
+        }
+      ],
+      "review_note": "generic task-ticket wording; QA Skill Version fixed at 1.0",
+      "scan_findings": [],
+      "source": "maintainer-edit",
+      "status": "approved"
+    },
+    "goatail": {
+      "accepted_risks": [],
+      "approved_at": "2026-10-08T12:03:35Z",
+      "approved_by": [
+        "the-goat"
+      ],
+      "digest": "sha256:291a603e0d69c7c8de83b0b3ff29992f8e475a0079b90c55970645b495b59abd",
+      "history": [
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-10-03T21:21:18Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:19dd8586dc00d46dbd1dadc379e47d90715c888f0e1f6d785f2cde989fdc4aee",
+          "review_note": "Candidate read in full as inert data; scanner clean after user-directed reword of the .env line to environment or credential configuration; user directed promotion.",
+          "scan_findings": [],
+          "source": "ponytail adapted",
+          "status": "approved"
+        }
+      ],
+      "review_note": "maintainer typo fix in description: high-contextrequests -> high-context requests; no other change",
+      "scan_findings": [],
+      "source": "maintainer-edit",
+      "status": "approved"
+    },
+    "governance-policy": {
+      "accepted_risks": [],
+      "approved_at": "2026-09-07T13:35:56Z",
+      "approved_by": [
+        "the-goat"
+      ],
+      "digest": "sha256:785abaa6f5395fdd6bbc7dd97d901207549015f4a9f7f356ff932bfccfaba59b",
+      "history": [
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-09-06T14:28:49Z",
+          "approved_by": [
+            "bootstrap:user-authorized-repository-creation"
+          ],
+          "digest": "sha256:79b9a60e4eed0de701a10db37f75254602aa523ebf00488e219af933d8fcb711",
+          "review_note": "Bootstrap policy created with the repository trust boundary and verified by the initial test suite.",
+          "source": "repository-bootstrap"
+        },
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-09-06T00:00:00Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:8c60ad4cf017df7b1a922f096f89a9df5931c8df859f8108283d538db6f32f91",
+          "review_note": "Extended the policy to cover the new memory/ shared-memory trust boundary (candidates, promotion, approved index) alongside the existing skills boundary.",
+          "source": "repository-maintainer"
+        },
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-09-06T00:00:00Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:f045e86b6b5a45c30189224d9b0a5b3197cfc16cf6a47d5cb3c581e3525408f0",
+          "review_note": "Added the session skill selection workflow: enumerate approved skills, propose the task-relevant subset, and require explicit user agreement before use.",
+          "source": "repository-maintainer"
+        },
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-09-06T00:00:00Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:a35e56d2fc0cab3d35a92cb7cc26b4cef9f33657e9aab1fdd0ac37e3e84bc7c1",
+          "review_note": "Extended the session-start gate to memory adoption and MCP adoption, symmetric to skill selection.",
+          "source": "repository-maintainer"
+        },
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-09-06T00:00:00Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:299c2c8bb1c07db141e6871d8484652f7d6f98d249cabf4451a69b51f326abf8",
+          "review_note": "Added the mcp/ trust boundary (candidates, scan_mcp.py, promote_mcp.py, approved-mcp.json) alongside skills and memory, and updated session MCP adoption to cross-reference it.",
+          "source": "repository-maintainer"
+        },
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-09-06T20:19:41Z",
+          "approved_by": [
+            "user-authorized-in-session"
+          ],
+          "digest": "sha256:d924149b27e38fa6612d54138f159fc7ff75c5066d1ba07a7a98865721cc6735",
+          "review_note": "Reviewed the policy-only change: all approved shared memory is mandatory before work, integrity failure stops work, private local copies are forbidden, and memory does not authorize unrelated actions.",
+          "source": "repository-maintainer mandatory shared-memory clarification"
+        },
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-09-06T20:30:49Z",
+          "approved_by": [
+            "user-authorized-in-session"
+          ],
+          "digest": "sha256:528df087cb913c7272c9b3f27f69980630bb82104e1bbfa779a1403172e3b38f",
+          "review_note": "Reviewed policy-only correction: standard_load is mandatory compact startup context; other approved memory loads only when task-relevant; candidate memory remains forbidden.",
+          "source": "repository-maintainer lightweight shared-memory correction"
+        },
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-09-07T12:11:04Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:d0b40ced98f262d711f4e646810d2c9ce3161d9c06444720fb6a805cd1cea288",
+          "review_note": "Reviewed in-place maintainer-edit boundary, mandatory scan and discussion, explicit human approval, registry history, candidate separation, and fail-closed integrity handling",
+          "scan_findings": [],
+          "source": "maintainer-authored reseal workflow",
+          "status": "approved"
+        }
+      ],
+      "review_note": "Sync MCP promotion rules with new LOCAL_LOOPBACK_HTTP_TRANSPORT waivable-medium carve-out",
+      "scan_findings": [],
+      "source": "maintainer-edit",
+      "status": "approved"
+    },
+    "mdk-docs-release": {
+      "accepted_risks": [],
+      "approved_at": "2026-09-29T10:47:17Z",
+      "approved_by": [
+        "the-goat"
+      ],
+      "digest": "sha256:cc2c8a2d71fbb7cb7f0b11601a24cc61dc08aba9be3a960fe8143f973f67d64f",
+      "history": [
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-09-08T11:01:43Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:757506feabe270ea628602363a5ac77361ec6824bc24bbdd4f6acb6825843d0b",
+          "review_note": "Verified process steps against the real PR #246 diff and the authoritative maintainers/content/versioning.md checklist; fixed frontmatter name mismatch, doc reference, snippets source/destination path, GitHub link-pinning step, redirects.config.mjs mechanism, and added verification step. scan_skills.py --scope candidates --skill mdk-docs-release: PASS, 0 findings.",
+          "scan_findings": [],
+          "source": "candidate authored in-repo; reviewed against tetherto/mdk-docs PR #246 (promote-0.8) and maintainers/content/versioning.md in the mdk-docs repo",
+          "status": "approved"
+        },
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-09-08T11:26:14Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:baea03687622d4b3f95d94a06e191426b171c8d12827385dce4bab80b2428427",
+          "review_note": "Fold in maintainer's added step 4 (diff A vs B for dropped pages needing explicit redirect mappings, done before deleting A) and renumber steps 5-10 accordingly; updated the redirects step's cross-reference from step 4 to step 5 and to reference step 4's diff output. Learned from running the real 0.9-promote/0.8-archive/0.7-retire promotion this session.",
+          "scan_findings": [],
+          "source": "maintainer-edit",
+          "status": "approved"
+        },
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-09-29T10:29:55Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:ede286a878586b42d42449a5b86f2b7939ef5096af0caa8a93de771ebf38450a",
+          "review_note": "Add reusable scripts freeze_archive_links.py (steps 7-8: /archive link prefix, snippet-lane repoint, GitHub tag pin; processes mdx+meta.json, idempotent) and diff_pages.py (step 4: A-vs-current dropped-page diff) to the skill folder and wire them into SKILL.md; add step-10 guidance to regenerate .source after cache clear and to repoint archive links to pages the new release folded. Learned running the v0.10 promotion this session.",
+          "scan_findings": [],
+          "source": "maintainer-edit",
+          "status": "approved"
+        }
+      ],
+      "review_note": "Add explicit 'Monorepo (port-sync) snippets' section: these leaf pages that <include> _snippets/**/monorepo/** freeze via the normal step 7-8 lane/link/pin transforms (no special case), and 'monorepo:' frontmatter + .sync-manifest.json are left as inert frozen metadata. Documents the mechanism observed during the v0.10 promotion; no script change.",
+      "scan_findings": [],
+      "source": "maintainer-edit",
+      "status": "approved"
+    },
+    "mdk-docs-style": {
+      "accepted_risks": [
+        "PARENT_PATH"
+      ],
+      "approved_at": "2026-10-08T12:44:08Z",
+      "approved_by": [
+        "the-goat"
+      ],
+      "digest": "sha256:a3db98c41862dad6d284ff15e414845f564579b5c0bd3ef590eda29100acc18b",
+      "history": [],
+      "review_note": "prose-only style guide; no tools, hooks, scripts, or network; fetched file byte-identical to local monorepo copy; PARENT_PATH is a markdown link example in the guide text, not a traversal",
+      "scan_findings": [
+        {
+          "line": 31,
+          "path": "skills/candidates/mdk-docs-style/references/style.md",
+          "rule_id": "PARENT_PATH",
+          "severity": "medium"
+        }
+      ],
+      "source": "https://github.com/tetherto/mdk/blob/v0.10.0/docs/reference/maintainers/style.md (tag v0.10.0 = 7f5cae88f67cd0ebedaa325778f9209135de1b8f; file sha256 5b251a73c5cc68738cd8cffe379d1f0c9358c2a97338db3373228b0af973be86)",
+      "status": "approved"
+    },
+    "ponytail": {
+      "accepted_risks": [],
+      "approved_at": "2026-09-06T20:10:59Z",
+      "approved_by": [
+        "the-goat"
+      ],
+      "digest": "sha256:388ec42c9551f47d12555b1723b1af67b8fe18a8afbea0a8db96cfb870eb3803",
+      "history": [],
+      "review_note": "Reviewed as the standalone SKILL.md only: clean frontmatter (name/description/argument-hint/license, no allowed-tools/hooks/context/agent), no bundled scripts, prose-only coding-style directive (YAGNI/stdlib-first), no instruction-override/secret/destructive/persistence patterns. Deliberately excluded the rest of the upstream repo's plugin bundle: .claude-plugin/plugin.json registers SessionStart/SubagentStart/UserPromptSubmit hooks (hooks/*.js) that run unconditionally with no per-task gate, and ponytail-mcp/ is a separate MCP server -- neither reviewed nor approved here; this repo has no governed boundary for auto-executing plugin hooks yet.",
+      "scan_findings": [],
+      "source": "https://github.com/DietrichGebert/ponytail (skills/ponytail/SKILL.md, MIT license, commit as of 2026-09-06)",
+      "status": "approved"
+    },
+    "vale": {
+      "accepted_risks": [],
+      "approved_at": "2026-09-29T12:29:48Z",
+      "approved_by": [
+        "the-goat"
+      ],
+      "digest": "sha256:74b9ba13f5aeeca28c39fc992862ae248b6842a10f06ea15f5ce227962fcfb39",
+      "history": [
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-09-07T12:05:40Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:92d93c61895a76698789a2ba46c9eb789a4a79dd8d21516085ab1a8820705a2d",
+          "review_note": "Reviewed bounded execution: one changed-prose check and at most one verification rerun; no install, sync, Docker, editor-setting, or inferred configuration authority",
+          "scan_findings": [],
+          "source": "user-requested local Vale policy",
+          "status": "approved"
+        }
+      ],
+      "review_note": "Add advisory pointer to tetherto/docs-template (branch vale) as the canonical Vale config source of truth",
+      "scan_findings": [],
+      "source": "maintainer-edit",
+      "status": "approved"
+    }
+  }
+}

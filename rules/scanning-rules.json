@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "blocking_severity": "high",
+  "limits": {
+    "max_files": 100,
+    "max_file_bytes": 262144,
+    "max_total_bytes": 1048576,
+    "max_frontmatter_lines": 80
+  },
+  "required_frontmatter": [
+    "name",
+    "description"
+  ],
+  "high_risk_frontmatter": [
+    "allowed-tools",
+    "hooks",
+    "context",
+    "agent"
+  ],
+  "text_extensions": [
+    ".md",
+    ".txt",
+    ".json",
+    ".yaml",
+    ".yml",
+    ".toml",
+    ".py",
+    ".sh",
+    ".bash",
+    ".zsh",
+    ".ps1",
+    ".js",
+    ".mjs",
+    ".cjs",
+    ".ts",
+    ".tsx",
+    ".jsx",
+    ".css",
+    ".html",
+    ".xml",
+    ".csv"
+  ],
+  "denied_filenames": [
+    ".env",
+    ".env.local",
+    "id_rsa",
+    "id_ed25519",
+    "credentials.json"
+  ],
+  "patterns": [
+    {
+      "id": "INSTRUCTION_OVERRIDE",
+      "severity": "critical",
+      "description": "Attempts to replace higher-priority instructions.",
+      "regex": "(?i)\\b(?:ignore|disregard|override)\\s+(?:all\\s+)?(?:previous|prior|system|developer|governance)\\s+(?:instructions|messages|rules|policy)\\b"
+    },
+    {
+      "id": "PERMISSION_BYPASS",
+      "severity": "critical",
+      "description": "Attempts to disable or bypass agent permission controls.",
+      "regex": "(?i)(?:dangerously[-_ ]skip[-_ ]permissions|bypassPermissions|disableAllHooks|allowManagedPermissionRulesOnly)"
+    },
+    {
+      "id": "DESTRUCTIVE_COMMAND",
+      "severity": "critical",
+      "description": "Contains destructive filesystem or Git commands.",
+      "regex": "(?i)(?:rm\\s+-[^\\n]*r[^\\n]*f|git\\s+reset\\s+--hard|git\\s+clean\\s+-[^\\n]*f|git\\s+push[^\\n]*--force|Remove-Item[^\\n]*-Recurse[^\\n]*-Force)"
+    },
+    {
+      "id": "ENCODED_EXECUTION",
+      "severity": "critical",
+      "description": "Decodes or launches an obscured payload.",
+      "regex": "(?i)(?:base64\\s+(?:--decode|-d)|frombase64string|powershell[^\\n]*(?:-enc|-encodedcommand))"
+    },
+    {
+      "id": "DYNAMIC_SKILL_COMMAND",
+      "severity": "high",
+      "description": "Uses Claude dynamic command expansion, which executes before review context is shown.",
+      "regex": "!`[^`]+`"
+    },
+    {
+      "id": "NETWORK_COMMAND",
+      "severity": "high",
+      "description": "Uses a command-line network client or downloads executable content.",
+      "regex": "(?i)(?:^|[;&|]\\s*|\\n\\s*)(?:curl|wget|Invoke-WebRequest|Invoke-RestMethod)\\b"
+    },
+    {
+      "id": "SECRET_ACCESS",
+      "severity": "high",
+      "description": "References common credential or secret locations.",
+      "regex": "(?i)(?:\\.ssh[/\\\\]|\\.aws[/\\\\]|\\.config[/\\\\]gcloud|credentials\\.(?:json|ini)|private[_ -]?key|api[_ -]?key|auth[_ -]?token|\\.env(?:\\.|\\b))"
+    },
+    {
+      "id": "PERSISTENCE_CHANGE",
+      "severity": "high",
+      "description": "Attempts to change agent startup, policy, hooks, or persistent configuration.",
+      "regex": "(?i)(?:write|edit|modify|replace|append|delete)[^\\n]{0,80}(?:CLAUDE\\.md|\\.claude[/\\\\]settings|governance policy|shell profile|startup file|auto memory)"
+    },
+    {
+      "id": "SHELL_EVALUATION",
+      "severity": "high",
+      "description": "Invokes a shell or process-evaluation primitive.",
+      "regex": "(?i)(?:\\beval\\s*\\(|\\bos\\.system\\s*\\(|\\bsubprocess\\.(?:run|call|Popen)\\s*\\(|\\b(?:bash|sh|zsh|cmd|powershell)\\s+-c\\b)"
+    },
+    {
+      "id": "PACKAGE_INSTALL",
+      "severity": "medium",
+      "description": "Installs packages or changes the local toolchain.",
+      "regex": "(?i)(?:pipx?|uv)\\s+install\\b|npm\\s+(?:install|i)\\b|pnpm\\s+(?:add|install)\\b|yarn\\s+add\\b|brew\\s+install\\b|apt(?:-get)?\\s+install\\b"
+    },
+    {
+      "id": "REMOTE_INSTRUCTION",
+      "severity": "medium",
+      "description": "Directs the agent to fetch or follow mutable remote instructions.",
+      "regex": "(?i)(?:fetch|download|read|follow|load)[^\\n]{0,80}https?://"
+    },
+    {
+      "id": "PARENT_PATH",
+      "severity": "medium",
+      "description": "References a parent path that may escape the skill or repository boundary.",
+      "regex": "(?:^|[\\s'\"(])\\.\\.[/\\\\]"
+    },
+    {
+      "id": "ARBITRARY_CODE_TOOL",
+      "severity": "medium",
+      "description": "Describes a declared tool capability as arbitrary/unsafe code execution (e.g. RCE-equivalent). May be a legitimate, intentionally powerful tool of an otherwise-reviewed server or skill, but needs deliberate risk acceptance rather than passing unnoticed alongside routine capabilities.",
+      "regex": "(?i)\\b(?:rce-equivalent|remote code execution|arbitrary (?:javascript|code)(?: execution)?|executes? arbitrary (?:javascript|code))\\b"
+    }
+  ]
+}

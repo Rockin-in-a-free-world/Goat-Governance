@@ -1,0 +1,107 @@
+{
+  "entries": {
+    "figma": {
+      "accepted_risks": [],
+      "approved_at": "2026-09-06T20:00:17Z",
+      "approved_by": [
+        "the-goat"
+      ],
+      "auth": "oauth",
+      "description": "Claude.ai-hosted Figma connector (claudeai-proxy) for reading Figma files and designs from within a session.",
+      "digest": "sha256:8d72c480d80b28517b3e0f8db4d0847c051d3cd47827b8e9e15ea28fc5aa8d23",
+      "history": [],
+      "host": "https://mcp.figma.com",
+      "review_note": "Reviewed transport (https, oauth), and both currently-visible auth-bootstrap tool descriptions as data; real Figma tool surface not yet visible pending authentication, flagged in body for re-review",
+      "scan_findings": [],
+      "source": "claude.ai connector settings (claudeai-proxy, https://mcp.figma.com)",
+      "status": "approved",
+      "transport": "http"
+    },
+    "mdk_site": {
+      "accepted_risks": [
+        "LOCAL_LOOPBACK_HTTP_TRANSPORT"
+      ],
+      "approved_at": "2026-10-08T13:04:56Z",
+      "approved_by": [
+        "the-goat"
+      ],
+      "auth": "none",
+      "description": "Project-local MCP server from the MDK monorepo's own @tetherto/mdk-mcp package, exposing site/fleet query and control tools (via examples/mvp-site's mcp-plugins/site plugin) over HTTP on localhost.",
+      "digest": "sha256:daef12e522e2a432a1100bf24450bb46874f4b319d29ac7adf690c83c86e8411",
+      "history": [
+        {
+          "accepted_risks": [
+            "LOCAL_LOOPBACK_HTTP_TRANSPORT"
+          ],
+          "approved_at": "2026-09-07T13:39:11Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "auth": "none",
+          "description": "Project-local MCP server from the MDK monorepo's own @tetherto/mdk-mcp package, exposing site/fleet query and control tools (via examples/mvp-site's mcp-plugins/site plugin) over HTTP on localhost.",
+          "digest": "sha256:9ec9e65aceec6d0b1ccc51255e567e3390c03015f59175177e57502b67e2d31e",
+          "host": "http://127.0.0.1:3008/mcp",
+          "review_note": "Reviewed provenance, transport/auth/host shape, and full tool surface (5 read-only + 1 write device/site tool from examples/mvp-site/backend/mcp-plugins/site). Accepted LOCAL_LOOPBACK_HTTP_TRANSPORT: server binds 127.0.0.1 only per its own source/README, no non-loopback exposure; medium risk from lack of TLS/auth accepted for local dev use.",
+          "scan_findings": [
+            {
+              "line": 1,
+              "path": "mcp/candidates/mdk_site.md",
+              "rule_id": "LOCAL_LOOPBACK_HTTP_TRANSPORT",
+              "severity": "medium"
+            }
+          ],
+          "source": "First-party: the MDK monorepo's own @tetherto/mdk-mcp server (backend/core/mcp), registered as mdk-site in examples/full-site/.mcp.json and enabled locally for MDK stack development",
+          "status": "approved",
+          "transport": "http"
+        }
+      ],
+      "host": "http://127.0.0.1:3008/mcp",
+      "review_note": "replace private monorepo name with public tetherto/mdk reference",
+      "scan_findings": [
+        {
+          "line": 1,
+          "path": "mcp/approved/mdk_site.md",
+          "rule_id": "LOCAL_LOOPBACK_HTTP_TRANSPORT",
+          "severity": "medium"
+        }
+      ],
+      "source": "maintainer-edit",
+      "status": "approved",
+      "transport": "http"
+    },
+    "playwright": {
+      "accepted_risks": [
+        "ARBITRARY_CODE_TOOL",
+        "LOCAL_STDIO_TRANSPORT"
+      ],
+      "approved_at": "2026-09-06T20:29:57Z",
+      "approved_by": [
+        "the-goat"
+      ],
+      "auth": "none",
+      "description": "Microsoft's official Playwright MCP server for browser automation (navigate, click, type, form-fill, snapshot/screenshot) via Claude Code's own MCP configuration.",
+      "digest": "sha256:cbe4d31b9b39a69f325872c55ef1571e174045bd60c60bb14f2d0ee00baeb28f",
+      "history": [],
+      "host": null,
+      "review_note": "Re-promotion after the prior approved record and registry entry were lost (approved copy and registry entry missing, likely from another concurrent session's cleanup; candidate file untouched, digest confirmed identical to the original review: sha256:cbe4d31b9b39a69f325872c55ef1571e174045bd60c60bb14f2d0ee00baeb28f). Same review as the original promotion: transport (stdio, no auth) and documented default tool surface (Core automation + Tab management only, no --caps passed); tool list is doc-sourced from the maintainers' README, not directly observed live, flagged in body for re-review once visible in a fresh session. Accepted risks unchanged: browser_run_code_unsafe (maintainer-documented RCE-equivalent, server-process-level arbitrary JS) and browser_evaluate (page-level eval) have no per-tool disable in Playwright MCP's capability model, so mitigation is procedural; local stdio transport risk accepted as before.",
+      "scan_findings": [
+        {
+          "line": 1,
+          "path": "mcp/candidates/playwright.md",
+          "rule_id": "LOCAL_STDIO_TRANSPORT",
+          "severity": "medium"
+        },
+        {
+          "line": 52,
+          "path": "mcp/candidates/playwright.md",
+          "rule_id": "ARBITRARY_CODE_TOOL",
+          "severity": "medium"
+        }
+      ],
+      "source": "claude mcp add playwright --scope user npx @playwright/mcp@latest (microsoft/playwright-mcp, verified active via GitHub API 2026-09-06)",
+      "status": "approved",
+      "transport": "stdio"
+    }
+  },
+  "schema_version": 1
+}
