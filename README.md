@@ -112,7 +112,8 @@ Flow:
 6. Preview promotion. No `--apply` yet.
 7. Promote only after user explicitly approves exact reviewed candidate and accepted risks.
 
-Skill example:
+<details>
+<summary>Skill example: scan, dry run, apply</summary>
 
 ```sh
 python3 scripts/scan_skills.py --scope candidates --skill example --format json
@@ -129,6 +130,8 @@ python3 scripts/promote_skill.py example \
   --apply
 ```
 
+</details>
+
 Rules:
 
 - Critical/high findings block promotion.
@@ -138,14 +141,18 @@ Rules:
 - Approved copy, registry history, review report, Git history preserve audit trail.
 - Promotion regenerates skill discovery wrapper, [`memory/approved/MEMORY.md`](memory/approved/MEMORY.md), or [`mcp/approved/MCP.md`](mcp/approved/MCP.md). Never edit generated files.
 
-Memory and MCP, same flags:
+<details>
+<summary>Memory and MCP: same flags</summary>
 
 ```sh
 python3 scripts/promote_memory.py ENTRY_NAME --approved-by "Reviewer Name" --source "Source" --review-note "Review"
 python3 scripts/promote_mcp.py ENTRY_NAME --approved-by "Reviewer Name" --source "Source" --review-note "Review"
 ```
 
-Memory candidate frontmatter:
+</details>
+
+<details>
+<summary>Memory candidate frontmatter</summary>
 
 ```yaml
 ---
@@ -156,7 +163,10 @@ metadata:
 ---
 ```
 
-MCP candidate frontmatter:
+</details>
+
+<details>
+<summary>MCP candidate frontmatter</summary>
 
 ```yaml
 ---
@@ -168,6 +178,8 @@ metadata:
   host: https://mcp.example.com # required for http/sse
 ---
 ```
+
+</details>
 
 Record visible MCP tool descriptions as quoted data. Say when authentication hides part of tool surface. New or materially changed live tool descriptions are external updates; return through candidates.
 
