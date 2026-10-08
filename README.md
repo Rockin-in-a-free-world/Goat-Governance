@@ -2,6 +2,13 @@
 
 Portable trust boundary for Claude skills, shared memory, MCP server records.
 
+> Governance shrinks what the agent is told: isolation shrinks what the agent can reach. 
+> This is governance only.
+
+## TL;DR
+
+External material enters quarantine under `candidates/`. Human reviews. Promotion SHA-256 pins approved content in `registry/`. Claude uses only digest-verified approved items, and only after you agree per session. Maintainer edits to approved items use shorter [reseal flow](#maintainer-edit-and-reseal).
+
 ## Quickstart
 
 Set two variables once in your shell rc, then one command verifies the whole trust boundary from any directory. It
@@ -17,10 +24,6 @@ python3 "$GOAT_GOVERNANCE"/scripts/scan_skills.py --list \
 ```
 
 Exit `0` and every row `OK`: the session may proceed. Anything else: stop, nothing unverified loads.
-
-## TL;DR
-
-External material enters quarantine under `candidates/`. Human reviews. Promotion SHA-256 pins approved content in `registry/`. Claude uses only digest-verified approved items, and only after you agree per session. Maintainer edits to approved items use shorter [reseal flow](#maintainer-edit-and-reseal).
 
 ## Why Goat Governance?
 
