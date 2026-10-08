@@ -2,6 +2,22 @@
 
 Portable trust boundary for Claude skills, shared memory, MCP server records.
 
+## Quickstart
+
+Set two variables once in your shell rc, then one command verifies the whole trust boundary from any directory. It
+stops at the first failure.
+
+```sh
+export GOAT_GOVERNANCE="$HOME/path/to/goat-governance"
+export GOAT_MEMORY="$HOME/path/to/goat-memory"          # private memory clone
+
+python3 "$GOAT_GOVERNANCE"/scripts/scan_skills.py --list \
+  && python3 "$GOAT_GOVERNANCE"/scripts/scan_memory.py --root "$GOAT_MEMORY" --list \
+  && python3 "$GOAT_GOVERNANCE"/scripts/scan_mcp.py --list
+```
+
+Exit `0` and every row `OK`: the session may proceed. Anything else: stop, nothing unverified loads.
+
 ## TL;DR
 
 External material enters quarantine under `candidates/`. Human reviews. Promotion SHA-256 pins approved content in `registry/`. Claude uses only digest-verified approved items, and only after you agree per session. Maintainer edits to approved items use shorter [reseal flow](#maintainer-edit-and-reseal).
