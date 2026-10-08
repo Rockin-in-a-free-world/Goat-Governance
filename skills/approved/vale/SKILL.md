@@ -9,9 +9,9 @@ Use the locally available Vale command-line tool and the repository's existing V
 
 ## Configuration source of truth
 
-The canonical Vale configuration for MDK docs is the `tetherto/docs-template` repository: its `.vale.ini` plus the `styles/` tree (the `Google`, `proselint`, and `write-good` packages synced by `vale sync`, the custom `Tether` style, and the `Tether-common` vocabulary). Downstream repositories consume this central config rather than defining their own; the reusable `vale-docs.yml` workflow takes a `docs_template_ref` input for exactly this.
+The organisation's `docs-template` repository is the canonical Vale configuration: its `.vale.ini` plus the `styles/` tree. Downstream repositories consume that central config rather than defining their own.
 
-This pointer is advisory: the local checkout path differs per machine, so treat the repository (and its `vale` branch / the ref your workflow pins) as the source of truth, not any fixed local path. For example, one such checkout is `docs-template/forked-docs-template` (a fork of `tetherto/docs-template`) on branch `vale`; yours may live elsewhere.
+This pointer is advisory: the local checkout path differs per machine, so treat the repository (and the branch or ref your workflow pins) as the source of truth, not any fixed local path.
 
 Any change to linting rules belongs in that source of truth and is reviewed there. Do not diverge from or locally override it to change linting behavior, and never edit the synced package styles under `styles/` — `vale sync` overwrites them.
 

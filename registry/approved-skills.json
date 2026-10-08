@@ -271,11 +271,11 @@
     },
     "vale": {
       "accepted_risks": [],
-      "approved_at": "2026-09-29T12:29:48Z",
+      "approved_at": "2026-10-08T13:55:49Z",
       "approved_by": [
         "the-goat"
       ],
-      "digest": "sha256:74b9ba13f5aeeca28c39fc992862ae248b6842a10f06ea15f5ce227962fcfb39",
+      "digest": "sha256:c8f1eecdee40c99f9081089705f26e38f222c88e0e5902e922aa9c3c985a7576",
       "history": [
         {
           "accepted_risks": [],
@@ -288,9 +288,21 @@
           "scan_findings": [],
           "source": "user-requested local Vale policy",
           "status": "approved"
+        },
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-09-29T12:29:48Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:74b9ba13f5aeeca28c39fc992862ae248b6842a10f06ea15f5ce227962fcfb39",
+          "review_note": "Add advisory pointer to tetherto/docs-template (branch vale) as the canonical Vale config source of truth",
+          "scan_findings": [],
+          "source": "maintainer-edit",
+          "status": "approved"
         }
       ],
-      "review_note": "Add advisory pointer to tetherto/docs-template (branch vale) as the canonical Vale config source of truth",
+      "review_note": "generalise config pointer: drop org-specific repo, style, and workflow names",
       "scan_findings": [],
       "source": "maintainer-edit",
       "status": "approved"
