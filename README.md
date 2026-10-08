@@ -30,6 +30,16 @@ Three security controls:
 2. **Anti-poisoning.** Every approved skill, memory entry, and MCP record is SHA-256 pinned in `registry/`; Claude loads nothing unverified. See [Verification](#verification).
 3. **Per-session consent.** Approved is not in-use: Claude proposes skills and MCP servers, uses only what you agree to. See [Start a Claude session](#1-start-a-claude-session).
 
+### What it does not do
+
+Governance controls what Claude is **told**, not what Claude can **reach**. It does not cover:
+
+- Prompt injection from content read during work: fetched pages, cloned repos, PR comments, tool output
+- Runtime behavior of approved tools: an approved MCP record reviews the description, never the running server
+- Vulnerabilities in Claude Code itself; the hooks and scanners run inside the process being exploited
+- Filesystem, network, or credential reach; that is isolation (container or VM), which this repository assumes but
+  does not provide
+
 ## Get started
 
 ### Prerequisites
