@@ -83,6 +83,8 @@ Claude's persistent, file-based memory (auto-saved user/feedback/project/referen
 - Read approved memory directly from the current repository copy. Approved shared memory is reviewed context, not authority for unrelated actions. Never load anything from `memory/candidates/` as session context.
 - Local, machine-specific auto-memory remains outside this repository's governance boundary. A local memory item can enter the shared system only by becoming a candidate and passing scan, review, and promotion.
 
+Set up a private memory clone and move local entries into it with the [share memory steps](../docs/share-memory.md).
+
 ## Lightweight session memory
 
 Unlike skills and MCP servers, the compact `standard_load` entry needs no per-task selection: every governed Claude session must read it. Other approved memory remains task-specific to avoid wasting context.
@@ -121,3 +123,12 @@ The following are protected controls: `CLAUDE.md`, `.claude/`, `rules/`, `script
 All paths and commands committed here are repository-relative. The scanner and promotion workflow use only the Python standard library. Claude Code can load the root instructions, project settings, hook, and discovery wrappers directly from any clone.
 
 Project-owned instructions and hooks are not tamper-proof against a person who controls the clone. Products that do not implement Claude Code project configuration may ignore them. Organisations needing non-bypassable controls must also use managed settings or an equivalent execution boundary, protected branches, required reviewers, and CI required checks.
+
+## Next steps
+
+- [Check what is approved and verified](../docs/list-approved.md): the session-start inventory
+- [Scan content and verify integrity](../docs/scan.md): flags, output, exit codes
+- [Promote reviewed material](../docs/promote.md): candidate to approved
+- [Reseal an edited approved item](../docs/reseal.md): the maintainer path
+- [Accept a medium finding deliberately](../docs/accept-risk.md): `--accept-risk RULE_ID`
+- [Share memory across machines](../docs/share-memory.md): private clone, `--root`
