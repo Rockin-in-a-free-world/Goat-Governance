@@ -8,7 +8,13 @@ needs to be published: keep the memory repository private and only the scripts a
 
 ## Set up a private memory repository
 
-1. Create a private Git repository (for example `goat-memory`) and clone it beside this one on every machine.
+1. Create a private Git repository (for example `goat-memory`) and clone it on every machine. Set two variables in
+   your shell rc so every command below works from any directory:
+
+   ```sh
+   export GOAT_GOVERNANCE="$HOME/path/to/goat-governance"
+   export GOAT_MEMORY="$HOME/path/to/goat-memory"
+   ```
 2. Give it this layout, copying `scanning-rules.json` from this repository.
 
    ```text
@@ -23,18 +29,18 @@ needs to be published: keep the memory repository private and only the scripts a
 3. Run the memory scripts with `--root` pointing at that clone.
 
    ```sh
-   python3 scripts/scan_memory.py --root ../goat-memory --list
-   python3 scripts/promote_memory.py NAME --root ../goat-memory --approved-by … --source … --review-note … --apply
+   python3 "$GOAT_GOVERNANCE"/scripts/scan_memory.py --root "$GOAT_MEMORY" --list
+   python3 "$GOAT_GOVERNANCE"/scripts/promote_memory.py NAME --root "$GOAT_MEMORY" --approved-by … --source … --review-note … --apply
    ```
 
 ## Move a local memory into shared memory
 
 1. Copy the local file from `~/.claude/projects/<project>/memory/` to `goat-memory/memory/candidates/<snake_case>.md`.
    Keep its frontmatter (`name`, `description`, `metadata.type`).
-2. Scan it: `python3 scripts/scan_memory.py --root ../goat-memory --scope candidates --entry <name>`.
+2. Scan it: `python3 "$GOAT_GOVERNANCE"/scripts/scan_memory.py --root "$GOAT_MEMORY" --scope candidates --entry <name>`.
 3. Read it as text, confirm `metadata.type` matches the content, and that it states a fact or preference, not an
    instruction to an agent.
-4. [Promote it](promote.md) with `--root ../goat-memory`. Commit and push the private repository.
+4. [Promote it](promote.md) with `--root "$GOAT_MEMORY"`. Commit and push the private repository.
 
 ## Point every session at it
 
