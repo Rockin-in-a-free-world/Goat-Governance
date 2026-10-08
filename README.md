@@ -255,26 +255,6 @@ CI runs `--scope all` per scanner. Held candidate with critical/high finding fai
 
 New Claude Code device: `/context`, `/skills`, `/hooks`, `/permissions` show which committed controls loaded.
 
-## Layout
-
-```text
-.
-├── CLAUDE.md
-├── .claude/
-│   ├── settings.json
-│   └── skills/                  # generated discovery wrappers
-├── rules/
-│   ├── policy.md
-│   └── scanning-rules.json
-├── scripts/                     # scanners, promoters, reseal, hook
-├── registry/                    # digest-pinned approvals and history
-├── reports/skills/              # stored skill assessments
-├── skills/{candidates,approved}/
-├── memory/{candidates,approved}/
-├── mcp/{candidates,approved}/
-└── tests/
-```
-
 ## License
 
 [Apache License 2.0](LICENSE)
