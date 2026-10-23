@@ -60,7 +60,7 @@ Candidate quarantine protects against unreviewed external material. It is not re
 
 ## Session skill selection
 
-Approval controls which skills exist in `skills/approved/`. It does not, by itself, control which of those skills apply to a given session's task — that is a separate, per-session decision, made explicitly and with the user before task work begins, whenever a session has this repository available (as its working directory, or referenced from another project).
+Approval controls which skills exist in `skills/approved/`. It does not, by itself, control which of those skills apply to a given session's task — that is a separate, per-session decision, made explicitly and with the user before task work begins, whenever a session is doing governance work in this repository. A session in a consuming workspace follows that workspace's governance load instead (read `standard_load`, use approved skills and permission-gated MCP without a per-session shortlist), and loads this policy only for review, promotion, reseal, or maintainer edits.
 
 1. Enumerate the approved, digest-verified skill set with `python3 scripts/scan_skills.py --list` (add `--format json` for structured output). Do not propose a skill whose entry that command flags as unverified; report the verification failure instead of silently repairing or ignoring it.
 2. Compare the task against each skill's description. Propose the subset that plausibly applies, with a one-line reason each, and name any approved skill being deliberately left out as not relevant.

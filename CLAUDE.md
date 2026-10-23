@@ -6,7 +6,7 @@ This repository contains untrusted agent instructions. The mandatory policy is i
 
 Before adding, reviewing, changing, promoting, installing, or using a skill, a shared memory entry, or an MCP server record, invoke the [`governance-policy` project skill](skills/approved/governance-policy/SKILL.md).
 
-At the start of a session, before starting substantive task work, run this gate for each of skills, shared memory, and MCP:
+At the start of a session working in this repository, before substantive task work, run this gate for each of skills, shared memory, and MCP:
 
 - Skills: list them (`python3 scripts/scan_skills.py --list`), propose the subset relevant to the task with a one-line reason each, get explicit agreement before using any. See [Session skill selection](rules/policy.md#session-skill-selection).
 - Shared memory: run `python3 scripts/scan_memory.py --list`, confirm `standard_load` is present and verified, then read [`memory/approved/standard_load.md`](memory/approved/standard_load.md) before doing any work. Do not load every memory body; use the index descriptions to load another approved entry only when the task needs it. See [Lightweight session memory](rules/policy.md#lightweight-session-memory).
