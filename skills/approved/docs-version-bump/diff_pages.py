@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Diff a retiring archive tree against the current docs tree (promotion step 4).
+"""Diff a retiring archive tree against the current docs tree.
 
 Finds pages present in the version about to be deleted (A) but absent from the
 current tree, so each dropped URL gets an explicit safety-net redirect before A
-leaves the disk. Run it while A is still present (before the delete in step 5).
+leaves the disk. Run it while A is still present, before A is deleted.
 
 For each A page with no current-tree counterpart it prints the derived URL and
 whether the URL still resolves in current (parity via the catch-all) or needs an
@@ -13,7 +13,7 @@ beginning with `_`) have no route and are skipped.
     python diff_pages.py --repo <mdk-docs> --old v0-8-0
 
 This reports; it does not edit redirects.config.mjs — add the overrides by hand
-(mirroring any existing unversioned mapping's target), per SKILL.md step 9.
+(mirroring any existing unversioned mapping's target), per SKILL.md.
 """
 
 from __future__ import annotations
