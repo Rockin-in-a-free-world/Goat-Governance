@@ -27,9 +27,24 @@ jobs:
           python-version: "3.12"
       - name: Run unit tests
         run: python -m unittest discover -s tests -v
-      - name: Scan skill candidates and verify approved skill registry
-        run: python scripts/scan_skills.py --scope all
-      - name: Scan memory candidates and verify approved memory registry
-        run: python scripts/scan_memory.py --scope all
-      - name: Scan MCP candidates and verify approved MCP registry
-        run: python scripts/scan_mcp.py --scope all
+      # Blocking: the approval boundary must hold on every branch. These verify
+      # digests, discovery wrappers and registry sync for already-approved content.
+      - name: Verify approved skill registry
+        run: python scripts/scan_skills.py --scope approved
+      - name: Verify approved memory registry
+        run: python scripts/scan_memory.py --scope approved
+      - name: Verify approved MCP registry
+        run: python scripts/scan_mcp.py --scope approved
+      # Report-only: candidates are quarantine. Findings here are expected and are
+      # surfaced for reviewers, but they must not block unrelated pull requests --
+      # the promote_* scripts already refuse to promote anything with a blocking
+      # finding, so admission stays gated regardless of what sits in quarantine.
+      - name: Scan skill candidates (report only)
+        continue-on-error: true
+        run: python scripts/scan_skills.py --scope candidates
+      - name: Scan memory candidates (report only)
+        continue-on-error: true
+        run: python scripts/scan_memory.py --scope candidates
+      - name: Scan MCP candidates (report only)
+        continue-on-error: true
+        run: python scripts/scan_mcp.py --scope candidates
