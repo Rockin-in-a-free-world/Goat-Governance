@@ -14,6 +14,19 @@
       "source": "https://github.com/DietrichGebert/ponytail (benchmarks/arms/caveman-SKILL.md, MIT license, commit as of 2026-09-06) -- same author/repo as the approved ponytail skill, which names Caveman as its companion",
       "status": "approved"
     },
+    "docs-version-bump": {
+      "accepted_risks": [],
+      "approved_at": "2026-10-28T13:24:11Z",
+      "approved_by": [
+        "the-goat"
+      ],
+      "digest": "sha256:de7c2c9f63aa9ba7fc4b6ab38f01a0f7e7ffd146c0ef55d370a27ed6f2fc9b21",
+      "history": [],
+      "review_note": "Trim restated promotion steps to pointers into maintainers/content/versioning.md; retain the scripts, the A-vs-current dropped-page diff and the LLM-dump strip as skill-owned; drop the repo-name path prefix; sync forked freeze_archive_links.py llms-full handling. Candidate scan clean after fixing frontmatter name to match directory.",
+      "scan_findings": [],
+      "source": "in-repo maintainer authoring; renamed from the prior approved skill and re-entered through candidates",
+      "status": "approved"
+    },
     "doctor-plus": {
       "accepted_risks": [
         "REMOTE_INSTRUCTION"
@@ -180,56 +193,6 @@
         }
       ],
       "review_note": "Sync MCP promotion rules with new LOCAL_LOOPBACK_HTTP_TRANSPORT waivable-medium carve-out",
-      "scan_findings": [],
-      "source": "maintainer-edit",
-      "status": "approved"
-    },
-    "mdk-docs-release": {
-      "accepted_risks": [],
-      "approved_at": "2026-09-29T10:47:17Z",
-      "approved_by": [
-        "the-goat"
-      ],
-      "digest": "sha256:cc2c8a2d71fbb7cb7f0b11601a24cc61dc08aba9be3a960fe8143f973f67d64f",
-      "history": [
-        {
-          "accepted_risks": [],
-          "approved_at": "2026-09-08T11:01:43Z",
-          "approved_by": [
-            "the-goat"
-          ],
-          "digest": "sha256:757506feabe270ea628602363a5ac77361ec6824bc24bbdd4f6acb6825843d0b",
-          "review_note": "Verified process steps against the real PR #246 diff and the authoritative maintainers/content/versioning.md checklist; fixed frontmatter name mismatch, doc reference, snippets source/destination path, GitHub link-pinning step, redirects.config.mjs mechanism, and added verification step. scan_skills.py --scope candidates --skill mdk-docs-release: PASS, 0 findings.",
-          "scan_findings": [],
-          "source": "candidate authored in-repo; reviewed against tetherto/mdk-docs PR #246 (promote-0.8) and maintainers/content/versioning.md in the mdk-docs repo",
-          "status": "approved"
-        },
-        {
-          "accepted_risks": [],
-          "approved_at": "2026-09-08T11:26:14Z",
-          "approved_by": [
-            "the-goat"
-          ],
-          "digest": "sha256:baea03687622d4b3f95d94a06e191426b171c8d12827385dce4bab80b2428427",
-          "review_note": "Fold in maintainer's added step 4 (diff A vs B for dropped pages needing explicit redirect mappings, done before deleting A) and renumber steps 5-10 accordingly; updated the redirects step's cross-reference from step 4 to step 5 and to reference step 4's diff output. Learned from running the real 0.9-promote/0.8-archive/0.7-retire promotion this session.",
-          "scan_findings": [],
-          "source": "maintainer-edit",
-          "status": "approved"
-        },
-        {
-          "accepted_risks": [],
-          "approved_at": "2026-09-29T10:29:55Z",
-          "approved_by": [
-            "the-goat"
-          ],
-          "digest": "sha256:ede286a878586b42d42449a5b86f2b7939ef5096af0caa8a93de771ebf38450a",
-          "review_note": "Add reusable scripts freeze_archive_links.py (steps 7-8: /archive link prefix, snippet-lane repoint, GitHub tag pin; processes mdx+meta.json, idempotent) and diff_pages.py (step 4: A-vs-current dropped-page diff) to the skill folder and wire them into SKILL.md; add step-10 guidance to regenerate .source after cache clear and to repoint archive links to pages the new release folded. Learned running the v0.10 promotion this session.",
-          "scan_findings": [],
-          "source": "maintainer-edit",
-          "status": "approved"
-        }
-      ],
-      "review_note": "Add explicit 'Monorepo (port-sync) snippets' section: these leaf pages that <include> _snippets/**/monorepo/** freeze via the normal step 7-8 lane/link/pin transforms (no special case), and 'monorepo:' frontmatter + .sync-manifest.json are left as inert frozen metadata. Documents the mechanism observed during the v0.10 promotion; no script change.",
       "scan_findings": [],
       "source": "maintainer-edit",
       "status": "approved"

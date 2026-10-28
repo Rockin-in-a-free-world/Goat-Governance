@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reform links in a freshly-frozen mdk-docs archive tree (promotion step 7-8).
+"""Reform links in a freshly-frozen mdk-docs archive tree.
 
 Applies the three mechanical rewrites that make a copied `content/docs` tree
 self-contained under `/archive`, run against both the frozen docs tree
@@ -8,7 +8,8 @@ self-contained under `/archive`, run against both the frozen docs tree
 
   1. Internal doc links  -> prefix root-relative docs routes with `/archive`
                             (/concepts, /guides, /reference, /support,
-                             /tutorials, /llms-full.txt).
+                             /tutorials). `/llms-full.txt` is left alone: only
+                            the current release ships an LLM dump.
   2. Snippet includes    -> repoint the lane `_snippets/current/` to
                             `_snippets/<version>/`.
   3. GitHub source links -> pin `github.com/tetherto/mdk/blob/main` and
@@ -17,7 +18,7 @@ self-contained under `/archive`, run against both the frozen docs tree
 The rewrite is idempotent: already-`/archive` links, an already-repointed lane,
 and already-pinned refs are left untouched, so re-running is safe.
 
-Defaults are a dry run; pass --apply to write. See SKILL.md steps 7-8.
+Defaults are a dry run; pass --apply to write. See SKILL.md.
 """
 
 from __future__ import annotations
@@ -31,14 +32,12 @@ from pathlib import Path
 # code sample, external URLs, github path segments — is left alone).
 DOCS_ROUTES = ("concepts", "guides", "reference", "support", "tutorials")
 
-# Match a docs route or /llms-full.txt only at a genuine link boundary:
+# Match a docs route only at a genuine link boundary:
 #  - lookbehind blocks a preceding word char (already `/archive...`) or `/`
 #    (a path segment inside a URL such as .../blob/main/guides/...);
 #  - lookahead requires the segment to end (so /reference but not /referenced).
 _ROUTE = "|".join(DOCS_ROUTES)
-INTERNAL_LINK_RE = re.compile(
-    r"(?<![\w/])(/(?:" + _ROUTE + r")|/llms-full\.txt)(?=[/\"#)\s]|$)"
-)
+INTERNAL_LINK_RE = re.compile(r"(?<![\w/])(/(?:" + _ROUTE + r"))(?=[/\"#)\s]|$)")
 
 GITHUB_MAIN_RE = re.compile(r"(github\.com/tetherto/mdk/(?:blob|tree))/main(?=[/\"#)\s]|$)")
 
