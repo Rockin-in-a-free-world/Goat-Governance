@@ -36,6 +36,21 @@ class ScannerTests(unittest.TestCase):
         )
         return skill
 
+    def test_digest_order_is_case_sensitive_on_every_os(self) -> None:
+        # "SKILL.md" sorts before "references/" case-sensitively; a case-insensitive
+        # (Windows Path) sort would reverse them and change the digest.
+        import hashlib
+
+        with tempfile.TemporaryDirectory() as directory:
+            skill = Path(directory) / "ordered"
+            (skill / "references").mkdir(parents=True)
+            (skill / "SKILL.md").write_bytes(b"skill\n")
+            (skill / "references" / "notes.md").write_bytes(b"notes\n")
+            expected = hashlib.sha256()
+            for relative, content in (("SKILL.md", b"skill\n"), ("references/notes.md", b"notes\n")):
+                expected.update(relative.encode("utf-8") + b"\0" + content + b"\0")
+            self.assertEqual(digest_skill_tree(skill), "sha256:" + expected.hexdigest())
+
     def test_safe_skill_passes(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

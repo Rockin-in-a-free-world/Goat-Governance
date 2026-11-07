@@ -295,11 +295,11 @@
     },
     "vale": {
       "accepted_risks": [],
-      "approved_at": "2026-10-08T13:55:49Z",
+      "approved_at": "2026-11-07T11:58:23Z",
       "approved_by": [
         "the-goat"
       ],
-      "digest": "sha256:c8f1eecdee40c99f9081089705f26e38f222c88e0e5902e922aa9c3c985a7576",
+      "digest": "sha256:ce68f296b04cede8142c75c23de305775340bfbe3ef30ecb50acaf906bb61560",
       "history": [
         {
           "accepted_risks": [],
@@ -324,9 +324,21 @@
           "scan_findings": [],
           "source": "maintainer-edit",
           "status": "approved"
+        },
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-10-08T13:55:49Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:c8f1eecdee40c99f9081089705f26e38f222c88e0e5902e922aa9c3c985a7576",
+          "review_note": "generalise config pointer: drop org-specific repo, style, and workflow names",
+          "scan_findings": [],
+          "source": "maintainer-edit",
+          "status": "approved"
         }
       ],
-      "review_note": "generalise config pointer: drop org-specific repo, style, and workflow names",
+      "review_note": "Allow repository .vale.ini that selects and tunes central styles, or the central config; CI job decides which. Require explicit --config and --no-global, CI path exclusions, and a version-difference note. Generic text-editor wording. Rule, style, and vocabulary changes stay in docs-template",
       "scan_findings": [],
       "source": "maintainer-edit",
       "status": "approved"

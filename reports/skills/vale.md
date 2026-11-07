@@ -45,10 +45,10 @@ No scanner risk IDs require acceptance.
 - Installation, updates, package synchronization, Docker, editor settings, configuration, and vocabulary policy remain separate actions requiring separate authority.
 - A single verification run is allowed after relevant fixes; repeated clean-up loops are prohibited.
 - Output is summarized rather than dumped, limiting time and context use.
-- The human-facing VS Code extension is explicitly excluded as an agent execution path. Its separate high-severity assessment does not grant this skill additional capability.
+- Text editor Vale integrations are human-facing and explicitly excluded as an agent execution path. They grant this skill no additional capability.
 
 ## Value
 
 The skill solves the stated agent-control problem directly: Claude gets a predictable prose-quality gate without running Vale after every edit or silently expanding linting into tool installation, dependency synchronization, Docker, configuration changes, or repository-wide work.
 
-Promotion completed through `scripts/promote_skill.py` after the findings were discussed and the user explicitly approved the Claude-only skill. The approved tree, registry digest, and generated Claude discovery wrapper verify. The redundant candidate copy was removed after promotion; the human extension remains separately classified as high risk and was not promoted.
+Promotion completed through `scripts/promote_skill.py` after the findings were discussed and the user explicitly approved the Claude-only skill. The approved tree, registry digest, and generated Claude discovery wrapper verify. The redundant candidate copy was removed after promotion. Text editor integrations are outside this skill and were not promoted.

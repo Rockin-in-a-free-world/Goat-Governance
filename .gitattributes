@@ -1,0 +1,4 @@
+# Approved skills, memory, and MCP records are digest-pinned over their exact
+# bytes. Check out text files with LF on every OS, so a Windows checkout
+# (core.autocrlf=true by default) hashes the same as Linux and macOS.
+* text=auto eol=lf
