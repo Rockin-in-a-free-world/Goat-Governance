@@ -168,7 +168,13 @@ def digest_skill_tree(skill_dir: Path) -> str:
     if not skill_dir.is_dir() or skill_dir.is_symlink():
         raise ScannerError(f"skill directory is missing or is a symlink: {skill_dir}")
     digest = hashlib.sha256()
-    files = sorted(path for path in skill_dir.rglob("*") if path.is_file() or path.is_symlink())
+    # Sort by case-sensitive relative path parts. Sorting Path objects directly is
+    # case-insensitive on Windows, which reorders e.g. SKILL.md vs references/ and
+    # changes the digest. This key matches the existing POSIX order exactly.
+    files = sorted(
+        (path for path in skill_dir.rglob("*") if path.is_file() or path.is_symlink()),
+        key=lambda path: path.relative_to(skill_dir).parts,
+    )
     for path in files:
         if path.is_symlink():
             raise ScannerError(f"cannot digest symlink: {path}")
