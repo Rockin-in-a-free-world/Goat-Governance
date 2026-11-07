@@ -45,10 +45,11 @@ Keyed to the numbered steps in versioning.md's **Promoting a new release**.
 **Steps 1 and 3 (freeze, copy snippets)** — plain recursive copies, no script. Copy, never
 move: the current lane keeps its own `content/_snippets/current/`.
 
-**Before step 2 (delete A), diff A against the new archive.** Not in versioning.md, and the
-build will not catch it: versioning.md's step 8 check walks the *archive* tree against current,
-so it never sees a page that existed in A and is already gone from B. Those URLs survive only
-via the `/A/*` catch-all, which lands them on a page that may not be the right one.
+**Before step 2 (which retires *and deletes* A, both trees), diff A against the new archive.**
+Not in versioning.md, and the build will not catch it: versioning.md's step 8 check walks the
+*archive* tree against current, so it never sees a page that existed in A and is already gone
+from B. Those URLs survive only via the `/A/*` catch-all, which lands them on a page that may
+not be the right one.
 
 Run `diff_pages.py --repo <repo> --old A` while A's tree is still on disk. It lists each A page
 with no current-tree URL and the override to add; parked (`_`-prefixed) pages are skipped, and

@@ -16,11 +16,11 @@
     },
     "docs-version-bump": {
       "accepted_risks": [],
-      "approved_at": "2026-10-28T13:24:11Z",
+      "approved_at": "2026-10-30T15:08:14Z",
       "approved_by": [
         "the-goat"
       ],
-      "digest": "sha256:de7c2c9f63aa9ba7fc4b6ab38f01a0f7e7ffd146c0ef55d370a27ed6f2fc9b21",
+      "digest": "sha256:7f25a49947602c7d7cf972fd39450f66d7754058e0ac0038078f5aab62a783ce",
       "history": [
         {
           "accepted_risks": [],
@@ -69,11 +69,23 @@
           "scan_findings": [],
           "source": "maintainer-edit",
           "status": "approved"
+        },
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-10-28T13:24:11Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:de7c2c9f63aa9ba7fc4b6ab38f01a0f7e7ffd146c0ef55d370a27ed6f2fc9b21",
+          "review_note": "Trim restated promotion steps to pointers into maintainers/content/versioning.md; retain the scripts, the A-vs-current dropped-page diff and the LLM-dump strip as skill-owned; drop the repo-name path prefix; sync forked freeze_archive_links.py llms-full handling. Candidate scan clean after fixing frontmatter name to match directory.",
+          "scan_findings": [],
+          "source": "in-repo maintainer authoring; renamed from the prior approved skill and re-entered through candidates",
+          "status": "approved"
         }
       ],
-      "review_note": "Trim restated promotion steps to pointers into maintainers/content/versioning.md; retain the scripts, the A-vs-current dropped-page diff and the LLM-dump strip as skill-owned; drop the repo-name path prefix; sync forked freeze_archive_links.py llms-full handling. Candidate scan clean after fixing frontmatter name to match directory.",
+      "review_note": "Maintainer edit: step 2 of versioning.md now details deleting both retired trees; SKILL.md parenthetical corrected to match.",
       "scan_findings": [],
-      "source": "in-repo maintainer authoring; renamed from the prior approved skill and re-entered through candidates",
+      "source": "maintainer-edit",
       "status": "approved"
     },
     "doctor-plus": {
