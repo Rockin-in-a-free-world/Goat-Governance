@@ -295,11 +295,11 @@
     },
     "vale": {
       "accepted_risks": [],
-      "approved_at": "2026-11-07T11:58:23Z",
+      "approved_at": "2026-11-11T16:43:19Z",
       "approved_by": [
-        "the-goat"
+        "maintainer"
       ],
-      "digest": "sha256:ce68f296b04cede8142c75c23de305775340bfbe3ef30ecb50acaf906bb61560",
+      "digest": "sha256:5c8d804b707d160cb4dcd048da8b38fc7db5b0d3d904450ae400f5c1135fc0d3",
       "history": [
         {
           "accepted_risks": [],
@@ -336,9 +336,21 @@
           "scan_findings": [],
           "source": "maintainer-edit",
           "status": "approved"
+        },
+        {
+          "accepted_risks": [],
+          "approved_at": "2026-11-07T11:58:23Z",
+          "approved_by": [
+            "the-goat"
+          ],
+          "digest": "sha256:ce68f296b04cede8142c75c23de305775340bfbe3ef30ecb50acaf906bb61560",
+          "review_note": "Allow repository .vale.ini that selects and tunes central styles, or the central config; CI job decides which. Require explicit --config and --no-global, CI path exclusions, and a version-difference note. Generic text-editor wording. Rule, style, and vocabulary changes stay in docs-template",
+          "scan_findings": [],
+          "source": "maintainer-edit",
+          "status": "approved"
         }
       ],
-      "review_note": "Allow repository .vale.ini that selects and tunes central styles, or the central config; CI job decides which. Require explicit --config and --no-global, CI path exclusions, and a version-difference note. Generic text-editor wording. Rule, style, and vocabulary changes stay in docs-template",
+      "review_note": "Added the vale branch pin, the .tether-vale-source symlink, and the no-sync rule for the sandbox; wording by the docs maintainer, no external material",
       "scan_findings": [],
       "source": "maintainer-edit",
       "status": "approved"

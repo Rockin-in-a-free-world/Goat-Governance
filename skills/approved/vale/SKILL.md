@@ -20,6 +20,8 @@ Use the configuration the repository's own Vale CI job uses. The job shows which
 
 This pointer is advisory: the local checkout path differs per machine, so treat the repository (and the branch or ref your workflow pins) as the source of truth, not any fixed local path.
 
+The MDK repositories pin the `vale` branch of `docs-template` in their CI jobs (`docs_template_ref: vale`), so read that branch, not `main`, when checking which rules, exceptions, or vocabulary apply. A repository config reaches the central `styles/` tree through an ignored, relative symlink at the repository root, `.tether-vale-source`, pointing at the sibling `docs-template` checkout. A `StylesPath ... doesn't exist` error means that link is missing or dangling: report it, do not copy styles in.
+
 New or changed rules, styles, and vocabulary belong in `docs-template` and are reviewed there; a repository config only selects and tunes them. Do not add uncommitted or per-machine overrides to change linting behavior, and never edit the synced package styles under `styles/` — `vale sync` overwrites them.
 
 ## Trigger gate
@@ -39,6 +41,7 @@ For a normal task, default to one check at the final review point. An individual
 - Do not scan the whole repository unless the user explicitly asks for a repository-wide check.
 - Exclude generated, vendored, cached, and build-output files, and any paths the repository's Vale CI job ignores.
 - If the Vale executable or repository configuration is unavailable, report that once and stop.
+- Inside the sandbox container Vale is preinstalled at the version CI pins and egress is restricted. Do not run `vale sync`; the synced packages are already present in the central `styles/` tree. A missing package is a finding to report, not a download to attempt.
 - Installing or updating Vale, synchronizing style packages, enabling Docker, changing editor settings, and changing the Vale configuration are separate tasks. Never infer permission for them from a lint request.
 
 ## Handle results
